@@ -28,11 +28,13 @@
 
       /* Seção da esquerda com o logo e informações */
       .left-section {
-        text-align: center;
+        height: 100%;
+        display: flex;
+        justify-content: center;
 
         .logo {
           width: 500px;
-          margin-bottom: 50px;
+          margin: auto;
         }
 
         .heading {
@@ -41,18 +43,6 @@
           color: #ffffff;
         }
         /*nao possui conta*/
-        .description {
-          font-size: 14px;
-          color: #ffffff;
-          margin-top: 10px;
-
-          .register-link {
-            color: #ffffff;
-            font-weight: 600;
-            text-decoration: underline;
-            margin-left: 5px;
-          }
-        }
       }
 
       /* Formulário de login */
@@ -66,17 +56,37 @@
         text-align: center;
 
         .form-title {
-          font-size: 50px;
+          font-size: 25px;
           font-weight: bold;
           font-weight: 700;
-          margin-bottom: 30px;
+          margin-bottom: 10px;
           color: #ffffff;
           font-family: Arial, Helvetica, sans-serif;
+        }
+        .description {
+          font-size: 14px;
+          color: #ffffff;
+          margin-top: 10px;
+          margin-bottom: 20px;
+
+          .register-link {
+            color: #0056b3;
+            font-weight: 600;
+            text-decoration: underline;
+            margin-left: 5px;
+          }
         }
 
         .input-group {
           margin-bottom: 15px;
           display: flex;
+          flex-direction: column;
+
+          label {
+            color: #fff;
+            text-align: left;
+            margin-bottom: 5px;
+          }
 
           .input {
             width: 100%;
