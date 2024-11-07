@@ -29,49 +29,45 @@
             </p>
           </div>
 
-          <form class="form">
-            <h3 class="form-title">Registre-se</h3>
-
-            <div class="input-group">
-              <input
-                name="usuario"
-                type="usuario"
-                autocomplete="usuario"
-                required
-                class="input"
-                placeholder="usuario"
-              />
+          <div class="rigth-section">
+            <div class="alert-area">
             </div>
+            <form>
+              <h3 class="form-title">Registre-se</h3>
 
-            <div class="input-group">
-              <input
-                name="email"
-                type="email"
-                autocomplete="email"
-                required
-                class="input"
-                placeholder="Email"
-              />
-            </div>
-            <div class="input-group">
-              <input
-                name="senha"
-                type="senha"
-                autocomplete="current-password"
-                required
-                class="input"
-                placeholder="Senha"
-              />
-            </div>
+              <div class="input-group">
+                <input
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                  class="input"
+                  placeholder="Email"
+                />
+              </div>
+              <div class="input-group">
+                <input
+                  name="senha"
+                  type="password"
+                  autocomplete="current-password"
+                  required
+                  class="input"
+                  placeholder="Senha"
+                />
+              </div>
 
-            <div class="button-container">
-              <button type="button" class="login-button">Log in</button>
-            </div>
+              <div class="button-container">
+                <button type="submit" class="login-button">Log in</button>
+              </div>
 
-            <p class="separator">ou continue com</p>
-          </form>
+              <p class="separator">ou continue com</p>
+            </form>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- JS -->
+    <script src="../js/login.js"></script>
   </body>
 </html>
