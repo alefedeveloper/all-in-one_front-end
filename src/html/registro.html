@@ -6,10 +6,9 @@
     <title>Registro</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/normalize.css" />
-    <link rel="stylesheet" href="../css/registro.css" />
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
     <div class="container">
@@ -29,49 +28,65 @@
             </p>
           </div>
 
-          <form class="form">
-            <h3 class="form-title">Registre-se</h3>
+          <div class="rigth-section">
+            <div class="alert-area"></div>
+            
+            <form class="form">
+              <h3 class="form-title">Registre-se</h3>
 
-            <div class="input-group">
-              <input
-                name="usuario"
-                type="usuario"
-                autocomplete="usuario"
-                required
-                class="input"
-                placeholder="usuario"
-              />
-            </div>
+              <div class="input-group">
+                <label for="name">
+                  Nome de usuário:
+                  <input
+                    name="name"
+                    type="text"
+                    autocomplete="additional-name"
+                    required
+                    class="input"
+                    placeholder="Usuário"
+                  />
+                </label>
+              </div>
 
-            <div class="input-group">
-              <input
-                name="email"
-                type="email"
-                autocomplete="email"
-                required
-                class="input"
-                placeholder="Email"
-              />
-            </div>
-            <div class="input-group">
-              <input
-                name="senha"
-                type="senha"
-                autocomplete="current-password"
-                required
-                class="input"
-                placeholder="Senha"
-              />
-            </div>
+              <div class="input-group">
+                <label for="email">
+                  E-mail:
+                  <input
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    required
+                    class="input"
+                    placeholder="E-mail"
+                  />
+                </label>
+              </div>
 
-            <div class="button-container">
-              <button type="button" class="login-button">Log in</button>
-            </div>
+              <div class="input-group">
+                <label for="password">
+                  Senha:
+                  <input
+                    name="password"
+                    type="password"
+                    autocomplete="current-password"
+                    required
+                    class="input"
+                    placeholder="Senha"
+                  />
+                </label>
+              </div>
 
-            <p class="separator">ou continue com</p>
-          </form>
+              <div class="button-container">
+                <button type="submit" class="login-button">Cadastrar</button>
+              </div>
+
+            </form>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- JS -->
+    <script src="../js/registro.js"></script>
   </body>
 </html>

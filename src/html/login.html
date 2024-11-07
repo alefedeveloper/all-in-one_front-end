@@ -6,10 +6,9 @@
     <title>Login</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/normalize.css" />
-    <link rel="stylesheet" href="../css/registro.css" />
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
     <div class="container">
@@ -25,42 +24,48 @@
             <p class="description"></p>
             <p class="description">
               Não possui cadastro ?
-              <a href="../html/registro.html" class="register-link">cadastrar</a>
+              <a href="../html/registro.html" class="register-link"
+                >cadastrar</a
+              >
             </p>
           </div>
 
           <div class="rigth-section">
-            <div class="alert-area">
-            </div>
+            <div class="alert-area"></div>
             <form>
               <h3 class="form-title">Entrar</h3>
 
               <div class="input-group">
-                <input
-                  name="email"
-                  type="email"
-                  autocomplete="email"
-                  required
-                  class="input"
-                  placeholder="Email"
-                />
+                <label for="email">
+                  E-mail:
+                  <input
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    required
+                    class="input"
+                    placeholder="E-mail"
+                  />
+                </label>
               </div>
               <div class="input-group">
-                <input
-                  name="senha"
-                  type="password"
-                  autocomplete="current-password"
-                  required
-                  class="input"
-                  placeholder="Senha"
-                />
+                <label for="password">
+                  Senha:
+                  <input
+                    name="password"
+                    type="password"
+                    autocomplete="current-password"
+                    required
+                    class="input"
+                    placeholder="Senha"
+                  />
+                </label>
               </div>
 
               <div class="button-container">
                 <button type="submit" class="login-button">Log in</button>
               </div>
-
-              <p class="separator">ou continue com</p>
+              
             </form>
           </div>
         </div>

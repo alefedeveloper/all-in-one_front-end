@@ -1,24 +1,24 @@
-// Elementos html
 const form = document.querySelector("div.rigth-section > form");
 
-// Lógica para realizar o login
-const login = async (event) => {
+// Lógica para realizar o cadastro
+const register = async (event) => {
   // Impedir a ação padrão do formulário
   event.preventDefault();
 
   // Pega os dados do formulário
+  const name = document.querySelector('input[name="name"]').value;
   const email = document.querySelector('input[name="email"]').value;
   const password = document.querySelector('input[name="password"]').value;
 
   // Enviando os dados para rota de login
   const response = await fetch(
-    "https://all-in-one-back-end.onrender.com/user/login",
+    "https://all-in-one-back-end.onrender.com/user/create",
     {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ name, email, password }),
       credentials: "include",
     }
   );
@@ -28,15 +28,12 @@ const login = async (event) => {
 
   console.log(data);
 
-  // Verificando se o login foi realizado com sucesso
+  // Verificando se o usuário foi criado com sucesso
   if (data.status == "success") {
-    // Armazenando o token no localStorage e redirecionando para página inicial
-    localStorage.setItem("token", data.token);
-
-    alert("Login realizado com sucesso!", "success");
+    alert("Usuário criado com sucesso!", "success");
 
     setTimeout(() => {
-      window.location.href = "../../index.html";
+      window.location.href = "../html/login.html";
     }, 1500);
   } else if (data.status == "error") {
     // Virificando o tipo de erro
@@ -44,7 +41,6 @@ const login = async (event) => {
       data.error.forEach((message) => alert(message, "error"));
     else alert(data.message, data.result.status);
   }
-
 };
 
 // Criando mensagem de alerta
@@ -76,5 +72,5 @@ function alert(message, status) {
   }, 3000);
 }
 
-// Adicionando evento para pegar o envio dos dados do formulário e realizar o login
-form.addEventListener("submit", login);
+// Adicionando evento para pegar o envio dos dados do formulário e realizar o registro
+form.addEventListener("submit", register);
