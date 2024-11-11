@@ -1,6 +1,7 @@
 // Elementos html
-const formLogin = document.querySelector("div.rigth-section > form.login");
-const formRegister = document.querySelector("div.rigth-section > #register");
+const formLogin = document.getElementById("login");
+const formRegister = document.getElementById("register");
+
 
 // URL para requisições
 const url = "https://all-in-one-back-end.onrender.com";
@@ -60,7 +61,7 @@ async function loginAndRegister(form, router) {
 // Criando mensagem de alerta
 function alert(message, status) {
   // Área do alerta
-  const alertArea = document.querySelector(".rigth-section > .alert-area");
+  const alertArea = document.querySelector(".page-container .alert-area");
 
   // Corpo do alerta
   const alert = document.createElement("div");
@@ -86,12 +87,15 @@ function alert(message, status) {
   }, 3000);
 }
 
+const alertArea = document.querySelector(".page-container .alert-area");
+
+
 // Adicionando evento para pegar o envio dos dados do formulário e realizar o login
 formLogin.addEventListener("submit", async function (event) {
   // Impedir a ação padrão do formulário
   event.preventDefault();
 
-  // Funçao para realizar o login ou registro
+  // Funçao para realizar o login
   await loginAndRegister(this, "/user/login");
 });
 
@@ -100,6 +104,6 @@ formRegister.addEventListener("submit", async function (event) {
   // Impedir a ação padrão do formulário
   event.preventDefault();
 
-  // Funçao para realizar o login ou registro
+  // Funçao para realizar o registro
   await loginAndRegister(this, "/user/create");
 });

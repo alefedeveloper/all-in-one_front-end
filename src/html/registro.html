@@ -1,87 +1,172 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Registro</title>
+    <title>Register</title>
 
-    <!-- CSS -->
+    <link rel="stylesheet" href="../css/loginAndRegister.css" />
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/normalize.css" />
-    <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
-    <div class="container">
-      <div class="content">
-        <div class="layout">
-          <div class="left-section">
-            <img
-              src="../image/LOGOTIPO-ALL-IN-ONE.png"
-              alt="logo"
-              class="logo"
-              div
+    <header class="header">
+      <nav>
+        <a href="../../index.html" class="logo">
+          AIO
+          <span style="font-weight: 300; font-size: 1rem; opacity: 0.8"
+            >ALL IN ONE</span
+          >
+        </a>
+        <div class="login-register-container">
+          <a class="link-page" href="./login.html" >Entrar</a>
+          <a class="link-page active">Registrar</a>
+        </div>
+      </nav>
+    </header>
+    <div class="page-container">
+      <div class="content-left">
+        <div class="register-container">
+          <div class="alert-area"></div>
+
+          <h1>Create Account</h1>
+          <p class="subtitle">
+            Join us to explore all our features and services
+          </p>
+
+          <form id="register" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="name">Nome</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Nome de usuário"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Coloque seu e-mail"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="password">Senha</label>
+              <input
+                type="password"
+                id="password"
+                placeholder="Crie uma senha"
+                name="password"
+              />
+            </div>
+
+            <button type="submit" class="btn">Registrar</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="content-right">
+        <div class="illustration">
+          <svg
+            class="floating-element"
+            width="600"
+            height="500"
+            viewBox="0 0 600 500"
+          >
+            <!-- Interface elements -->
+            <defs>
+              <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop
+                  offset="0%"
+                  style="stop-color: #2d6be4; stop-opacity: 0.2"
+                />
+                <stop
+                  offset="100%"
+                  style="stop-color: #2d6be4; stop-opacity: 0.8"
+                />
+              </linearGradient>
+            </defs>
+
+            <!-- Main screen -->
+            <rect
+              x="100"
+              y="50"
+              width="400"
+              height="300"
+              rx="20"
+              fill="url(#grad1)"
+              opacity="0.8"
             />
-            <h2 class="heading"></h2>
-            <p class="description"></p>
-            <p class="description">
-              já esta cadastrado ?
-              <a href="../html/login.html" class="register-link">conecte-se</a>
-            </p>
-          </div>
 
-          <div class="rigth-section">
-            <div class="alert-area"></div>
+            <!-- Floating elements -->
+            <g class="floating-icons">
+              <rect
+                x="50"
+                y="100"
+                width="60"
+                height="60"
+                rx="15"
+                fill="#2D6BE4"
+                opacity="0.3"
+              >
+                <animate
+                  attributeName="y"
+                  values="100;90;100"
+                  dur="3s"
+                  repeatCount="indefinite"
+                />
+              </rect>
 
-            <form enctype="multipart/form-data" id="register">
-              <h3 class="form-title">Registre-se</h3>
+              <circle cx="500" cy="150" r="25" fill="#2D6BE4" opacity="0.4">
+                <animate
+                  attributeName="cy"
+                  values="150;170;150"
+                  dur="4s"
+                  repeatCount="indefinite"
+                />
+              </circle>
 
-              <div class="input-group">
-                <label for="name">
-                  Nome de usuário:
-                  <input
-                    name="name"
-                    type="text"
-                    autocomplete="additional-name"
-                    required
-                    class="input"
-                    placeholder="Usuário"
-                  />
-                </label>
-              </div>
+              <rect
+                x="450"
+                y="300"
+                width="40"
+                height="40"
+                rx="10"
+                fill="#2D6BE4"
+                opacity="0.3"
+              >
+                <animate
+                  attributeName="y"
+                  values="300;280;300"
+                  dur="3.5s"
+                  repeatCount="indefinite"
+                />
+              </rect>
+            </g>
 
-              <div class="input-group">
-                <label for="email">
-                  E-mail:
-                  <input
-                    name="email"
-                    type="email"
-                    autocomplete="email"
-                    required
-                    class="input"
-                    placeholder="E-mail"
-                  />
-                </label>
-              </div>
-
-              <div class="input-group">
-                <label for="password">
-                  Senha:
-                  <input
-                    name="password"
-                    type="password"
-                    autocomplete="current-password"
-                    required
-                    class="input"
-                    placeholder="Senha"
-                  />
-                </label>
-              </div>
-
-              <div class="button-container">
-                <button type="submit" class="login-button">Cadastrar</button>
-              </div>
-            </form>
-          </div>
+            <!-- Data visualization elements -->
+            <path
+              d="M150,200 Q300,100 450,200"
+              stroke="#2D6BE4"
+              fill="none"
+              stroke-width="3"
+              opacity="0.5"
+            >
+              <animate
+                attributeName="d"
+                dur="5s"
+                repeatCount="indefinite"
+                values="M150,200 Q300,100 450,200;
+                                      M150,180 Q300,280 450,180;
+                                      M150,200 Q300,100 450,200"
+              />
+            </path>
+          </svg>
         </div>
       </div>
     </div>
