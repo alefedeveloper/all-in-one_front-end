@@ -1,0 +1,224 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Chamados</title>
+    <style>
+        :root {
+            --navy: #001f3f;
+            --light-navy: #173555;
+            --white: #ffffff;
+            --gray: #f0f2f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--gray);
+        }
+
+        .navbar {
+            background-color: var(--navy);
+            padding: 1rem;
+            color: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--navy);
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--light-navy);
+        }
+
+        .ticket-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .ticket-item {
+            border-left: 4px solid var(--navy);
+            padding: 1rem;
+            background: var(--white);
+            border-radius: 4px;
+        }
+
+        .priority-high {
+            border-left-color: #ff4444;
+        }
+
+        .priority-medium {
+            border-left-color: #ffbb33;
+        }
+
+        .priority-low {
+            border-left-color: #00C851;
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--navy);
+        }
+
+        .tab {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            color: var(--navy);
+        }
+
+        .tab.active {
+            background-color: var(--navy);
+            color: var(--white);
+        }
+
+        .notification {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            padding: 1rem;
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 4px;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Sistema de Chamados</h1>
+    </nav>
+
+    <div class="container">
+        <div class="tabs">
+            <div class="tab active">Novo Chamado</div>
+            <div class="tab">Painel Admin</div>
+            <div class="tab">Configurações</div>
+        </div>
+
+        <!-- Formulário de Novo Chamado -->
+        <div class="card">
+            <h2>Abrir Novo Chamado</h2>
+            <form id="ticketForm">
+                <div class="form-group">
+                    <label>Título</label>
+                    <input type="text" required placeholder="Digite o título do chamado">
+                </div>
+
+                <div class="form-group">
+                    <label>Setor</label>
+                    <select required>
+                        <option value="">Selecione o setor</option>
+                        <option value="ti">TI</option>
+                        <option value="rh">Recursos Humanos</option>
+                        <option value="financeiro">Financeiro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Prioridade</label>
+                    <select required>
+                        <option value="">Selecione a prioridade</option>
+                        <option value="high">Alta</option>
+                        <option value="medium">Média</option>
+                        <option value="low">Baixa</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Descrição</label>
+                    <textarea rows="4" required placeholder="Descreva seu problema"></textarea>
+                </div>
+
+                <button type="submit" class="btn">Enviar Chamado</button>
+            </form>
+        </div>
+
+        <!-- Lista de Chamados (Painel Admin) -->
+        <div class="card">
+            <h2>Chamados Ativos</h2>
+            <div class="ticket-list">
+                <div class="ticket-item priority-high">
+                    <h3>Problema com Servidor</h3>
+                    <p>Setor: TI</p>
+                    <p>Status: Em andamento</p>
+                    <p>Prioridade: Alta</p>
+                </div>
+
+                <div class="ticket-item priority-medium">
+                    <h3>Solicitação de Férias</h3>
+                    <p>Setor: RH</p>
+                    <p>Status: Pendente</p>
+                    <p>Prioridade: Média</p>
+                </div>
+
+                <div class="ticket-item priority-low">
+                    <h3>Atualização de Cadastro</h3>
+                    <p>Setor: Financeiro</p>
+                    <p>Status: Aberto</p>
+                    <p>Prioridade: Baixa</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Exemplo de Notificação -->
+    <div class="notification">
+        Novo chamado registrado com sucesso!
+    </div>
+</body>
+</html>
