@@ -4,7 +4,7 @@ const formRegister = document.getElementById("register");
 
 
 // URL para requisições
-const url = "https://all-in-one-back-end.onrender.com";
+const url = "http://127.0.0.1:8080";
 
 // Lógica para realizar o login ou registro
 async function loginAndRegister(form, router) {
@@ -24,7 +24,6 @@ async function loginAndRegister(form, router) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(body),
-    credentials: "include",
   });
 
   // Resposta da requisição

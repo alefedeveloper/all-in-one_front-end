@@ -1,11 +1,99 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Chamados</title>
-</head>
-<body>
-     <p>funcionou</p>     
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema de Chamados</title>
+
+    <link rel="stylesheet" href="../css/chamado.css" />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/normalize.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <h1>Sistema de Chamados</h1>
+    </nav>
+
+    <div class="container">
+      <div class="painel">
+        <div class="tabs">
+          <div class="tab active">Chamado</div>
+          <div class="tab">Painel Admin</div>
+          <div class="tab">Configurações</div>
+        </div>
+
+        <!-- Formulário de Novo Chamado -->
+        <div class="card">
+          <h2>Abrir Novo Chamado</h2>
+          <form id="ticketForm" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="title">Título</label>
+              <input
+                type="text"
+                name="title"
+                required
+                placeholder="Digite o título do chamado"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="sectorId">Setor</label>
+              <select required name="sectorId">
+                <option value="">Selecione o setor</option>
+                <option value="1">TI</option>
+                <option value="rh">Recursos Humanos</option>
+                <option value="financeiro">Financeiro</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="urgency">Prioridade</label>
+              <select required name="urgency">
+                <option value="">Selecione a prioridade</option>
+                <option value="Alta">Alta</option>
+                <option value="Média">Média</option>
+                <option value="Baixa">Baixa</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="description">Descrição</label>
+              <textarea
+                name="description"
+                rows="4"
+                required
+                placeholder="Descreva seu problema"
+              ></textarea>
+            </div>
+            <input type="hidden" name="userId" value="2" />
+            <input type="hidden" name="status" value="Aguardando" />
+            <button type="submit" class="btn">Enviar Chamado</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Lista de Chamados (Painel Admin) -->
+      <div class="card tickets">
+        <h2>Chamados Ativos</h2>
+        <div class="tickets-group">
+          <div class="ticket-list waiting">
+            <h3>Aguardando</h3>
+            <div class="list"></div>
+          </div>
+          <div class="ticket-list progress">
+            <h3>Em Andamento</h3>
+            <div class="list"></div>
+          </div>
+          <div class="ticket-list completed">
+            <h3>Concluídos</h3>
+            <div class="list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JS -->
+    <script src="../js/chamados.js"></script>
+  </body>
 </html>
