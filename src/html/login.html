@@ -1,249 +1,167 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', 'Segoe UI', sans-serif;
-        }
 
-        body {
-            min-height: 100vh;
-            background: #040B27;
-            color: #fff;
-            display: flex;
-            overflow-x: hidden;
-        }
-
-        .page-container {
-            display: flex;
-            width: 100%;
-        }
-
-        .content-left {
-            flex: 1;
-            padding: 3rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .content-right {
-            flex: 1;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .header {
-            position: absolute;
-            top: 2rem;
-            left: 3rem;
-            display: flex;
-            justify-content: space-between;
-            width: calc(100% - 6rem);
-            z-index: 10;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-link {
-            color: #8B9CC7;
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-
-        .sign-up-btn {
-            background: transparent;
-            border: 1px solid #2D6BE4;
-            color: #2D6BE4;
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .sign-up-btn:hover {
-            background: #2D6BE4;
-            color: #fff;
-        }
-
-        .login-container {
-            max-width: 400px;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #fff 0%, #8B9CC7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .subtitle {
-            color: #8B9CC7;
-            margin-bottom: 2.5rem;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        label {
-            display: block;
-            color: #8B9CC7;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        input {
-            width: 100%;
-            padding: 1rem;
-            background: rgba(139, 156, 199, 0.05);
-            border: 1px solid rgba(139, 156, 199, 0.2);
-            border-radius: 8px;
-            color: #fff;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: #2D6BE4;
-            background: rgba(45, 107, 228, 0.05);
-        }
-
-        .login-btn {
-            width: 100%;
-            padding: 1rem;
-            background: #2D6BE4;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
-        }
-
-        .login-btn:hover {
-            background: #2457b8;
-            transform: translateY(-2px);
-        }
-
-        .illustration {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            right: -5%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .floating-element {
-            animation: float 6s ease-in-out infinite;
-        }
-    </style>
-</head>
-<body>
+    <link rel="stylesheet" href="../css/loginAndRegister.css" />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/normalize.css" />
+  </head>
+  <body>
+    <header class="header">
+      <nav>
+        <a href="../../index.html" class="logo">
+          AIO
+          <span style="font-weight: 300; font-size: 1rem; opacity: 0.8"
+            >ALL IN ONE</span
+          >
+        </a>
+        <div class="login-register-container">
+          <a class="link-page active">Entrar</a>
+          <a class="link-page" href="./registro.html">Registrar</a>
+        </div>
+      </nav>
+    </header>
     <div class="page-container">
-        <header class="header">
-            <div class="logo">LOGO</div>
-            <nav class="nav-links">
-                <a href="#" class="nav-link">Home</a>
-                <a href="#" class="nav-link">About</a>
-                <a href="#" class="nav-link">Features</a>
-                <button class="sign-up-btn">Sign Up</button>
-            </nav>
-        </header>
+      <div class="content-left">
+        <div class="login-container">
+          <div class="alert-area"></div>
 
-        <div class="content-left">
-            <div class="login-container">
-                <h1>Welcome Back</h1>
-                <p class="subtitle">Enter your credentials to access your account</p>
-                
-                <form>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" placeholder="Enter your email">
-                    </div>
+          <h1>Bem-vindo de volta!</h1>
+          <p class="subtitle">
+            Entre com suas credenciais para acessar sua conta
+          </p>
 
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" placeholder="Enter your password">
-                    </div>
-
-                    <button type="submit" class="login-btn">Log In</button>
-                </form>
+          <form id="login" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Seu e-mail"
+              />
             </div>
+
+            <div class="form-group">
+              <label for="password">Senha</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Sua senha"
+              />
+            </div>
+
+            <button type="submit" class="btn">Entrar</button>
+          </form>
         </div>
+      </div>
 
-        <div class="content-right">
-            <div class="illustration">
-                <svg class="floating-element" width="600" height="500" viewBox="0 0 600 500">
-                    <!-- Interface elements -->
-                    <defs>
-                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" style="stop-color:#2D6BE4;stop-opacity:0.2" />
-                            <stop offset="100%" style="stop-color:#2D6BE4;stop-opacity:0.8" />
-                        </linearGradient>
-                    </defs>
+      <div class="content-right">
+        <div class="illustration">
+          <svg
+            class="floating-element"
+            width="600"
+            height="500"
+            viewBox="0 0 600 500"
+          >
+            <!-- Interface elements -->
+            <defs>
+              <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop
+                  offset="0%"
+                  style="stop-color: #2d6be4; stop-opacity: 0.2"
+                />
+                <stop
+                  offset="100%"
+                  style="stop-color: #2d6be4; stop-opacity: 0.8"
+                />
+              </linearGradient>
+            </defs>
 
-                    <!-- Main screen -->
-                    <rect x="100" y="50" width="400" height="300" rx="20" fill="url(#grad1)" opacity="0.8"/>
-                    
-                    <!-- Floating elements -->
-                    <g class="floating-icons">
-                        <rect x="50" y="100" width="60" height="60" rx="15" fill="#2D6BE4" opacity="0.3">
-                            <animate attributeName="y" values="100;90;100" dur="3s" repeatCount="indefinite"/>
-                        </rect>
-                        
-                        <circle cx="500" cy="150" r="25" fill="#2D6BE4" opacity="0.4">
-                            <animate attributeName="cy" values="150;170;150" dur="4s" repeatCount="indefinite"/>
-                        </circle>
-                        
-                        <rect x="450" y="300" width="40" height="40" rx="10" fill="#2D6BE4" opacity="0.3">
-                            <animate attributeName="y" values="300;280;300" dur="3.5s" repeatCount="indefinite"/>
-                        </rect>
-                    </g>
+            <!-- Main screen -->
+            <rect
+              x="100"
+              y="50"
+              width="400"
+              height="300"
+              rx="20"
+              fill="url(#grad1)"
+              opacity="0.8"
+            />
 
-                    <!-- Data visualization elements -->
-                    <path d="M150,200 Q300,100 450,200" stroke="#2D6BE4" fill="none" stroke-width="3" opacity="0.5">
-                        <animate attributeName="d" 
-                            dur="5s" 
-                            repeatCount="indefinite"
-                            values="M150,200 Q300,100 450,200;
+            <!-- Floating elements -->
+            <g class="floating-icons">
+              <rect
+                x="50"
+                y="100"
+                width="60"
+                height="60"
+                rx="15"
+                fill="#2D6BE4"
+                opacity="0.3"
+              >
+                <animate
+                  attributeName="y"
+                  values="100;90;100"
+                  dur="3s"
+                  repeatCount="indefinite"
+                />
+              </rect>
+
+              <circle cx="500" cy="150" r="25" fill="#2D6BE4" opacity="0.4">
+                <animate
+                  attributeName="cy"
+                  values="150;170;150"
+                  dur="4s"
+                  repeatCount="indefinite"
+                />
+              </circle>
+
+              <rect
+                x="450"
+                y="300"
+                width="40"
+                height="40"
+                rx="10"
+                fill="#2D6BE4"
+                opacity="0.3"
+              >
+                <animate
+                  attributeName="y"
+                  values="300;280;300"
+                  dur="3.5s"
+                  repeatCount="indefinite"
+                />
+              </rect>
+            </g>
+
+            <!-- Data visualization elements -->
+            <path
+              d="M150,200 Q300,100 450,200"
+              stroke="#2D6BE4"
+              fill="none"
+              stroke-width="3"
+              opacity="0.5"
+            >
+              <animate
+                attributeName="d"
+                dur="5s"
+                repeatCount="indefinite"
+                values="M150,200 Q300,100 450,200;
                                     M150,180 Q300,280 450,180;
-                                    M150,200 Q300,100 450,200"/>
-                    </path>
-                </svg>
-            </div>
+                                    M150,200 Q300,100 450,200"
+              />
+            </path>
+          </svg>
         </div>
+      </div>
     </div>
-</body>
+
+    <!-- JS -->
+    <script src="../js/loginAndRegister.js"></script>
+  </body>
 </html>

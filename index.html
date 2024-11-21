@@ -1,125 +1,239 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AIO</title>
+    <link rel="stylesheet" href="./src/css/reset.css" />
+    <link rel="stylesheet" href="./src/css/normalize.css" />
+    <link rel="stylesheet" href="./src/css/index.css" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All in One (AIO)</title>
-    <link rel="stylesheet" href="./src/css/index.css">
-</head>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  </head>
 
-<body>
-  <div class="floating-shapes">
-    <div class="shape shape1"></div>
-    <div class="shape shape2"></div>
-</div>
-
-<nav>
-    <a href="#" class="logo">
-        AIO
-        <span style="font-weight: 300; font-size: 1rem; opacity: 0.8;">ALL IN ONE</span>
-    </a>
-    <div class="nav-links">
-        <a href="#home">PÁGINA INICIAL</a>
-        <a href="#sobre">SOBRE</a>
-        <a href="#servicos">SERVIÇOS</a>
-        <a href="#descricao">DESCRIÇÃO</a>
-        <div class="search-container">
-            <input type="text" class="search-input" placeholder="PESQUISAR">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
+  <body>
+    <header>
+      <nav>
+        <a href="#" class="logo">
+          AIO
+          <span style="font-weight: 300; font-size: 1rem; opacity: 0.8"
+            >ALL IN ONE</span
+          >
+        </a>
+        <div class="nav-links">
+          <div class="links">
+            <a href="#home">Início</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#descricao">Descrição</a>
+          </div>
+          <div class="login-register-container">
+            <a class="link-page" href="/src/html/login.html">Entrar</a>
+            <a class="link-page" href="/src/html/registro.html">Registrar</a>
+          </div>
         </div>
-    </div>
-</nav>
+      </nav>
+    </header>
 
-<section id="home">
-    <div class="section-content">
+    <section id="home">
+      <div class="section-content">
         <h1>Tudo o que você precisa em um só lugar.</h1>
-        <p class="subtitle">Transforme sua experiência digital com soluções integradas e inovadoras para seu negócio.</p>
+        <p class="subtitle">
+          Transforme sua experiência digital com soluções integradas e
+          inovadoras para seu negócio.
+        </p>
         <button class="cta-button">Fazer Parte</button>
-    </div>
-    <div class="visual-element"></div>
-</section>
+      </div>
+      <div class="shape shape1"></div>
+      <div class="shape shape2"></div>
+      <div class="visual-element"></div>
+    </section>
 
-<section id="sobre">
-    <div class="section-content">
-        <h2>Quem Nós Somos</h2>
+    <section id="sobre">
+      <div class="section-content">
         <div class="about-grid">
-            <div class="about-content">
-                <p class="subtitle">Somos uma empresa inovadora focada em fornecer soluções tecnológicas integradas que simplificam e potencializam o seu negócio. Nossa missão é transformar complexidade em simplicidade.</p>
-                <p class="subtitle">Com anos de experiência no mercado, desenvolvemos uma plataforma única que reúne todas as ferramentas necessárias para o sucesso do seu negócio.</p>
-            </div>
-            <div class="about-image">
-                <img src="/api/placeholder/400/320" alt="About Us">
-            </div>
+          <div class="about-content">
+            <h2>Quem Nós Somos</h2>
+            <p class="subtitle">
+              Somos uma empresa inovadora focada em fornecer soluções
+              tecnológicas integradas que simplificam e potencializam o seu
+              negócio. Nossa missão é transformar complexidade em simplicidade.
+            </p>
+            <p class="subtitle">
+              Com anos de experiência no mercado, desenvolvemos uma plataforma
+              única que reúne todas as ferramentas necessárias para o sucesso do
+              seu negócio.
+            </p>
+            <button class="cta-button">Conhecer</button>
+          </div>
+          <div class="about-image">
+            <img src="./src/image/Fachada.png" alt="About Us" />
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<section id="servicos">
-    <div class="section-content">
+    <section id="servicos">
+      <div class="section-content">
         <h2>O Que Fazemos</h2>
         <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">🚀</div>
-                <h3>Gestão Integrada</h3>
-                <p>Ferramentas completas para gerenciar todos os aspectos do seu negócio em um único lugar.</p>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="ph ph-gear"></i>
             </div>
-            <div class="service-card">
-                <div class="service-icon">💡</div>
-                <h3>Soluções Inovadoras</h3>
-                <p>Tecnologias de ponta para manter seu negócio sempre à frente da concorrência.</p>
+            <h3>Gestão Integrada</h3>
+            <p>
+              Ferramentas completas para gerenciar todos os aspectos do seu
+              negócio em um único lugar.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="ph ph-lightbulb-filament"></i>
             </div>
-            <div class="service-card">
-                <div class="service-icon">🛡️</div>
-                <h3>Segurança Total</h3>
-                <p>Proteção avançada para seus dados e operações com os mais altos padrões de segurança.</p>
+            <h3>Soluções Inovadoras</h3>
+            <p>
+              Tecnologias de ponta para manter seu negócio sempre à frente da
+              concorrência.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="ph ph-shield"></i>
             </div>
+            <h3>Segurança Total</h3>
+            <p>
+              Proteção avançada para seus dados e operações com os mais altos
+              padrões de segurança.
+            </p>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<section id="descricao">
-    <div class="section-content">
+    <section id="descricao">
+      <div class="section-content">
         <h2>Por Que Nos Escolher</h2>
         <div class="description-content">
-            <p class="subtitle">Oferecemos uma plataforma completa que combina tecnologia de ponta com facilidade de uso.</p>
-            <div class="feature-list">
-                <div class="feature-item">
-                    <div class="service-icon">📊</div>
-                    <div>
-                        <h3>Analytics Avançado</h3>
-                        <p>Análises detalhadas e insights poderosos para tomada de decisão.</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="service-icon">🔄</div>
-                    <div>
-                        <h3>Automação Inteligente</h3>
-                        <p>Processos automatizados para maior eficiência operacional.</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="service-icon">👥</div>
-                    <div>
-                        <h3>Suporte 24/7</h3>
-                        <p>Equipe especializada sempre disponível para ajudar.</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="service-icon">🌐</div>
-                    <div>
-                        <h3>Integração Total</h3>
-                        <p>Conecte todas as suas ferramentas em uma única plataforma.</p>
-                    </div>
-                </div>
+          <p class="subtitle">
+            Oferecemos uma plataforma completa que combina tecnologia de ponta
+            com facilidade de uso.
+          </p>
+          <div class="feature-list">
+            <div class="feature-item">
+              <div class="service-icon">
+                <i class="ph ph-chart-bar"></i>
+              </div>
+              <div>
+                <h3>Analytics Avançado</h3>
+                <p>
+                  Análises detalhadas e insights poderosos para tomada de
+                  decisão.
+                </p>
+              </div>
             </div>
+            <div class="feature-item">
+              <div class="service-icon">
+                <i class="ph ph-arrows-counter-clockwise"></i>
+              </div>
+              <div>
+                <h3>Automação Inteligente</h3>
+                <p>
+                  Processos automatizados para maior eficiência operacional.
+                </p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="service-icon">
+                <i class="ph ph-headset"></i>
+              </div>
+              <div>
+                <h3>Suporte 24/7</h3>
+                <p>Equipe especializada sempre disponível para ajudar.</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="service-icon">
+                <i class="ph ph-globe"></i>
+              </div>
+              <div>
+                <h3>Integração Total</h3>
+                <p>
+                  Conecte todas as suas ferramentas em uma única plataforma.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-</section>
-</body>
-
+      </div>
+    </section>
+    <footer>
+      <div class="footer-content">
+        <div class="footer-info">
+          <div class="logo">
+            <a href="#" class="logo">
+              AIO
+              <span style="font-weight: 300; font-size: 1.2rem; opacity: 0.8"
+                >ALL IN ONE</span
+              >
+            </a>
+            <div class="social-icons">
+              <i class="ph ph-instagram-logo"></i>
+              <i class="ph ph-facebook-logo"></i>
+            </div>
+          </div>
+          <div>
+            <p>Navegue</p>
+            <ul class="sections-guide">
+              <li>
+                <i class="ph-fill ph-circle"></i>
+                <a href="#home">Início</a>
+              </li>
+              <li>
+                <i class="ph-fill ph-circle"></i>
+                <a href="#sobre">Serviçõs</a>
+              </li>
+              <li>
+                <i class="ph-fill ph-circle"></i>
+                <a href="#servicos">Serviços</a>
+              </li>
+              <li>
+                <i class="ph-fill ph-circle"></i>
+                <a href="#descricao">Descrição</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p>Contato</p>
+            <ul class="contact">
+              <li>
+                <i class="ph ph-phone"></i>
+                <a href="#">(31) 99999-9999</a>
+              </li>
+              <li>
+                <i class="ph ph-whatsapp-logo"></i>
+                <a href="#">(31) 99999-9999</a>
+              </li>
+              <li>
+                <i class="ph ph-envelope-simple"></i>
+                <a href="#">contato@allinone.com.br</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p>Endereço</p>
+            <ul class="address">
+              <li>
+                <i class="ph ph-map-pin"></i>
+                <a href="#">Matipó/MG</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <p class="copyright">
+          &copy; 2024 All In One. Todos os direitos reservados.
+        </p>
+      </div>
+    </footer>
+  </body>
 </html>
-
