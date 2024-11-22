@@ -1,6 +1,7 @@
 // Lógica para mostrar os chamados registrdos
 
 const url = "https://all-in-one-back-end.onrender.com";
+const userId = localStorage.getItem("userId");
 
 // Função para buscar os chamodos
 async function getAllTickets() {
@@ -66,6 +67,7 @@ async function getTicket(slug) {
 // função para atualizar o ticket
 async function updateTicket(id, body) {
   const token = localStorage.getItem("token");
+  
 
   try {
     const response = await fetch(`${url}/ticket/update/${id}`, {
@@ -113,7 +115,7 @@ async function createTicket(form) {
         "Content-Type": "application/json",
         Authorization: token,
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify({...body, userId: userId}),
     });
 
     const data = await response.json();
@@ -123,7 +125,7 @@ async function createTicket(form) {
       notify("Ticket criado com sucesso!");
       setTimeout(() => {
         window.location.reload();
-      }, 2500);
+      }, 2000);
     } else if (data.status == "error") {
       console.log("Erro ao atualizar o ticket!");
       notify("Erro ao criar o ticket!");
@@ -271,7 +273,7 @@ async function showTicketModal(ticket) {
   const slug = ticket.dataset.slug;
 
   const { data, status } = await getTicket(slug);
-  
+
   if (status == true) {
     // Criar elementos do modal
     const modal = document.createElement("div");

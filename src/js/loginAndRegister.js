@@ -40,6 +40,7 @@ async function loginAndRegister(form, router) {
     if (router.includes("login")) {
       // Login realizado
       localStorage.setItem("token", data.token);
+      localStorage.setItem("userId", data.data.id);
 
       alert("Login realizado com sucesso!", "success");
 

@@ -40,7 +40,7 @@
             <div class="form-group">
               <label for="sectorId">Setor</label>
               <select required name="sectorId">
-                <option value="">Selecione o setor</option>
+                <option value="" selected disabled>Selecione o setor</option>
                 <option value="1">TI</option>
                 <option value="rh">Recursos Humanos</option>
                 <option value="financeiro">Financeiro</option>
@@ -66,7 +66,6 @@
                 placeholder="Descreva seu problema"
               ></textarea>
             </div>
-            <input type="hidden" name="userId" value="2" />
             <input type="hidden" name="status" value="Aguardando" />
             <button type="submit" class="btn">Enviar Chamado</button>
           </form>
