@@ -1,13 +1,14 @@
 // Elementos html
-const formLogin = document.getElementById("login");
-const formRegister = document.getElementById("register");
-
+const form = document.getElementById("form");
+const alertArea = document.querySelector(".page-container .alert-area");
 
 // URL para requisições
 const url = "https://all-in-one-back-end.onrender.com";
 
 // Lógica para realizar o login ou registro
 async function loginAndRegister(form, router) {
+  console.log(form);
+
   // Pega os dados do formulário
   const formData = new FormData(form);
 
@@ -17,7 +18,9 @@ async function loginAndRegister(form, router) {
     body[key] = value;
   });
 
-  // Enviando os dados para rota de login
+  console.log(body);
+
+  // Enviando os dados para rota de login ou registro
   const response = await fetch(`${url}${router}`, {
     method: "POST",
     headers: {
@@ -28,6 +31,8 @@ async function loginAndRegister(form, router) {
 
   // Resposta da requisição
   const data = await response.json();
+
+  console.log(data);
 
   // Verificando se a requisição foi realizada com sucesso
   if (data.status == "success") {
@@ -86,23 +91,16 @@ function alert(message, status) {
   }, 3000);
 }
 
-const alertArea = document.querySelector(".page-container .alert-area");
-
-
-// Adicionando evento para pegar o envio dos dados do formulário e realizar o login
-formLogin.addEventListener("submit", async function (event) {
-  // Impedir a ação padrão do formulário
-  event.preventDefault();
-
-  // Funçao para realizar o login
-  await loginAndRegister(this, "/user/login");
-});
+//_________________________________________________________________________________________________
 
 // Adicionando evento para pegar o envio dos dados do formulário e realizar o registro
-formRegister.addEventListener("submit", async function (event) {
+form.addEventListener("submit", function (event) {
   // Impedir a ação padrão do formulário
   event.preventDefault();
 
+  // Pegando a rota
+  const route = this.dataset.route;
+
   // Funçao para realizar o registro
-  await loginAndRegister(this, "/user/create");
+  loginAndRegister(this, route);
 });
