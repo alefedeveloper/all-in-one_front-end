@@ -14,29 +14,44 @@ function createSideMenu() {
   menuContent.className = "menu-content";
 
   // Itens do menu específicos
-  const menuItems = [
-    {
-      icon: '<i class="ph ph-user-circle"></i>',
-      text: "Perfil",
-      link: "../html/perfil.html",
-    },
-    {
-      icon: '<i class="ph ph-list-bullets"></i>',
-      text: "Chamados",
-      link: "../html/chamado.html",
-    },
-    {
-      icon: '<i class="ph ph-building"></i>',
-      text: "Setores",
-      link: "../html/setores.html",
-    },
-    {
-      icon: '<i class="ph ph-users"></i>',
-      text: "Equipe",
-      link: "../html/equipe.html",
-    },
-  ];
-
+  const permission = localStorage.getItem("permission");
+  let menuItems;
+  if (permission == "admin")
+    menuItems = [
+      {
+        icon: '<i class="ph ph-user-circle"></i>',
+        text: "Perfil",
+        link: "../html/perfil.html",
+      },
+      {
+        icon: '<i class="ph ph-list-bullets"></i>',
+        text: "Chamados",
+        link: "../html/chamado.html",
+      },
+      {
+        icon: '<i class="ph ph-building"></i>',
+        text: "Setores",
+        link: "../html/setores.html",
+      },
+      {
+        icon: '<i class="ph ph-users"></i>',
+        text: "Equipe",
+        link: "../html/equipe.html",
+      },
+    ];
+  else
+    menuItems = [
+      {
+        icon: '<i class="ph ph-user-circle"></i>',
+        text: "Perfil",
+        link: "../html/perfil.html",
+      },
+      {
+        icon: '<i class="ph ph-list-bullets"></i>',
+        text: "Chamados",
+        link: "../html/chamado.html",
+      },
+    ];
   // Criar itens do menu
   menuItems.forEach((item) => {
     const menuItem = document.createElement("div");

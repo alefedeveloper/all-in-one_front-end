@@ -118,7 +118,7 @@ async function getAllTickets() {
     // Verificando se a requisição foi realizada com sucesso
     if (data.status == "success") {
       // Adicionando ticket na coluna correspondente
-      addTicketToColumn(data.data);
+      addTicketToColumn(data.data, "admin");
       // Adicionando evento de mostrar o modal
       selectTickets();
       // Adicionando evento de arrastar e soltar
