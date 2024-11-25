@@ -16,17 +16,19 @@ async function getUser() {
       },
     });
 
-    const data = await response.json();    
+    const data = await response.json();
 
     // Verificando se a requisição foi realizada com sucesso
     if (data.status == "success") {
       // Salvando a permissão do usuário
       localStorage.setItem("permission", data.data.permission);
-      if (data.data.sector != "A definir") {
-        // Verificando a permissão do usuário
-        if (data.data.permission == "admin") getAllTickets();
-        // Buscando os tickets do setor específicado
-        else getAllTicketsSector(data.data.sector.id);
+
+      // Verificando a permissão do usuário
+      if (data.data.permission == "admin") getAllTickets();
+      // Buscando os tickets do setor específicado
+      else if (data.data.permission == "collaborator") {
+        if (data.data.sector != "A definir")
+          getAllTicketsSector(data.data.sector.id);
       }
     } else if (data.status == "error") {
       console.log("Token inválido");
@@ -83,7 +85,7 @@ async function getAllTicketsSector(sectorId) {
     // Verificando se a requisição foi realizada com sucesso
     if (data.status == "success") {
       // Adicionando ticket na coluna correspondente
-      addTicketToColumn(data.data,);
+      addTicketToColumn(data.data);
       // Adicionando evento de mostrar o modal
       selectTickets();
       // Adicionando evento de arrastar e soltar
@@ -112,7 +114,6 @@ async function getAllTickets() {
 
     const data = await response.json();
     console.log(data);
-    
 
     // Verificando se a requisição foi realizada com sucesso
     if (data.status == "success") {
@@ -263,43 +264,42 @@ function createTicketElement(sector, ticket) {
 // Função para adicionar o ticket na coluna correta
 function addTicketToColumn(body, permission) {
 
-console.log(body);
-if(permission == "admin")
-  body.forEach((ticket) => {
-    const status = ticket.status;
+  if (permission == "admin")
+    body.forEach((ticket) => {
+      const status = ticket.status;
 
-    let column;
-    if (status === "Aguardando") {
-      column = document.querySelector(".ticket-list.waiting > .list");
-    } else if (status === "Em Andamento") {
-      column = document.querySelector(".ticket-list.progress > .list");
-    } else if (status === "Concluído") {
-      column = document.querySelector(".ticket-list.completed > .list");
-    }
+      let column;
+      if (status === "Aguardando") {
+        column = document.querySelector(".ticket-list.waiting > .list");
+      } else if (status === "Em Andamento") {
+        column = document.querySelector(".ticket-list.progress > .list");
+      } else if (status === "Concluído") {
+        column = document.querySelector(".ticket-list.completed > .list");
+      }
 
-    if (column) {
-      const ticketElement = createTicketElement(ticket.sector.name, ticket);
-      column.appendChild(ticketElement);
-    }
-  });
+      if (column) {
+        const ticketElement = createTicketElement(ticket.sector.name, ticket);
+        column.appendChild(ticketElement);
+      }
+    });
+  else
+    body.tickets.forEach((ticket) => {
+      const status = ticket.status;
 
-  else body.tickets.forEach((ticket) => {
-    const status = ticket.status;
+      let column;
+      if (status === "Aguardando") {
+        column = document.querySelector(".ticket-list.waiting > .list");
+      } else if (status === "Em Andamento") {
+        column = document.querySelector(".ticket-list.progress > .list");
+      } else if (status === "Concluído") {
+        column = document.querySelector(".ticket-list.completed > .list");
+      }
 
-    let column;
-    if (status === "Aguardando") {
-      column = document.querySelector(".ticket-list.waiting > .list");
-    } else if (status === "Em Andamento") {
-      column = document.querySelector(".ticket-list.progress > .list");
-    } else if (status === "Concluído") {
-      column = document.querySelector(".ticket-list.completed > .list");
-    }
-
-    if (column) {
-      const ticketElement = createTicketElement(body.name, ticket);
-      column.appendChild(ticketElement);
-    }
-  });
+      if (column) {
+        const ticketElement = createTicketElement(body.name, ticket);
+        column.appendChild(ticketElement);
+      }
+    });
 }
 
 // __________________________________________________________________________________________
