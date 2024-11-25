@@ -16,12 +16,18 @@ async function getUser() {
       },
     });
 
-    const data = await response.json();
+    const data = await response.json();    
 
     // Verificando se a requisição foi realizada com sucesso
     if (data.status == "success") {
-      // Buscando os tickets do setor específicado
-      getAllTickets(data.data.sector.id);
+      // Salvando a permissão do usuário
+      localStorage.setItem("permission", data.data.permission);
+      if (data.data.sector != "A definir") {
+        // Verificando a permissão do usuário
+        if (data.data.permission == "admin") getAllTickets();
+        // Buscando os tickets do setor específicado
+        else getAllTicketsSector(data.data.sector.id);
+      }
     } else if (data.status == "error") {
       console.log("Token inválido");
     }
@@ -58,8 +64,8 @@ async function getAllSectors() {
   }
 }
 
-// Função para buscar os chamodos
-async function getAllTickets(sectorId) {
+// Função para buscar os chamodos de um setor específico
+async function getAllTicketsSector(sectorId) {
   // Pegando o token de login
   const token = localStorage.getItem("token");
 
@@ -73,6 +79,40 @@ async function getAllTickets(sectorId) {
     });
 
     const data = await response.json();
+
+    // Verificando se a requisição foi realizada com sucesso
+    if (data.status == "success") {
+      // Adicionando ticket na coluna correspondente
+      addTicketToColumn(data.data,);
+      // Adicionando evento de mostrar o modal
+      selectTickets();
+      // Adicionando evento de arrastar e soltar
+      addDragAndDropEventListeners();
+    } else if (data.status == "error") {
+      console.log("Token inválido");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Função para buscar todos os chamodos
+async function getAllTickets() {
+  // Pegando o token de login
+  const token = localStorage.getItem("token");
+
+  try {
+    const response = await fetch(`${url}/ticket/`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    });
+
+    const data = await response.json();
+    console.log(data);
+    
 
     // Verificando se a requisição foi realizada com sucesso
     if (data.status == "success") {
@@ -213,7 +253,7 @@ function createTicketElement(sector, ticket) {
   ticketElement.dataset.slug = ticket.slug;
   ticketElement.innerHTML = `
       <h3>${ticket.title}</h3>
-      <p>Setor: ${sector.name}</p>
+      <p>Setor: ${sector}</p>
       <p>Status: ${ticket.status}</p>
       <p>Prioridade: ${ticket.urgency}</p>
   `;
@@ -221,8 +261,11 @@ function createTicketElement(sector, ticket) {
 }
 
 // Função para adicionar o ticket na coluna correta
-function addTicketToColumn(sector) {
-  sector.tickets.forEach((ticket) => {
+function addTicketToColumn(body, permission) {
+
+console.log(body);
+if(permission == "admin")
+  body.forEach((ticket) => {
     const status = ticket.status;
 
     let column;
@@ -235,7 +278,25 @@ function addTicketToColumn(sector) {
     }
 
     if (column) {
-      const ticketElement = createTicketElement(sector, ticket);
+      const ticketElement = createTicketElement(ticket.sector.name, ticket);
+      column.appendChild(ticketElement);
+    }
+  });
+
+  else body.tickets.forEach((ticket) => {
+    const status = ticket.status;
+
+    let column;
+    if (status === "Aguardando") {
+      column = document.querySelector(".ticket-list.waiting > .list");
+    } else if (status === "Em Andamento") {
+      column = document.querySelector(".ticket-list.progress > .list");
+    } else if (status === "Concluído") {
+      column = document.querySelector(".ticket-list.completed > .list");
+    }
+
+    if (column) {
+      const ticketElement = createTicketElement(body.name, ticket);
       column.appendChild(ticketElement);
     }
   });
