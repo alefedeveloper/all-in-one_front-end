@@ -1,0 +1,92 @@
+.menu-toggle {
+  position: fixed;
+  left: 225px;
+  top: 20px;
+  z-index: 1000;
+  background: #001f3f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: left 0.3s ease;
+  box-shadow: -5px 5px 10px #001326;
+}
+
+.menu-toggle:hover {
+  background: #34495e;
+}
+
+.menu-toggle.moved {
+  left: 10px;
+  box-shadow: none;
+}
+
+.side-menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 250px;
+  background: #001f3f;
+  color: white;
+  transition: transform 0.3s ease;
+  z-index: 999;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.side-menu.collapsed {
+  transform: translateX(-250px);
+}
+
+.menu-content {
+  padding: 80px 0 20px 0;
+}
+
+.menu-item {
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+
+  a {
+    color: white;
+    display: flex;
+    align-items: center;
+
+    i {
+          margin-right: 10px;
+          font-size: 22px;
+    }
+  }
+}
+
+.menu-item:hover {
+  background-color: #001f3f;
+  border-left: 4px solid #3498db;
+}
+
+.menu-item.active {
+  background-color: #34495e;
+  border-left: 4px solid #3498db;
+}
+
+.menu-icon {
+  margin-right: 15px;
+  font-size: 20px;
+  width: 25px;
+  text-align: center;
+}
+
+.menu-text {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Ajustar margem do conteúdo principal quando menu estiver aberto */
+.menu-open main {
+  margin-left: 250px;
+}

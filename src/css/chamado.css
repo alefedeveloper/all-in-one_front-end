@@ -15,14 +15,8 @@ body {
   background-color: var(--gray);
 }
 
-.navbar {
-  background-color: var(--navy);
-  padding: 1rem;
-  color: var(--white);
-}
-
 .container {
-  margin: 2rem auto;
+  height: 100vh;
   padding: 0 1rem;
   display: flex;
   align-items: center;
@@ -36,6 +30,10 @@ body {
   padding: 2rem;
   margin-bottom: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  form {
+    width: 400px;
+  }
 
   h2 {
     margin-bottom: 2rem;

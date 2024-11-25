@@ -7,26 +7,20 @@
     <title>Sistema de Chamados</title>
 
     <link rel="stylesheet" href="../css/chamado.css" />
+    <link rel="stylesheet" href="../css/menuLateral.css" />
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/normalize.css" />
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
   </head>
   <body>
-    <nav class="navbar">
-      <h1>Sistema de Chamados</h1>
-    </nav>
 
     <div class="container">
       <div class="painel">
-        <div class="tabs">
-          <div class="tab active">Chamado</div>
-          <div class="tab">Painel Admin</div>
-          <div class="tab">Configurações</div>
-        </div>
-
         <!-- Formulário de Novo Chamado -->
         <div class="card">
           <h2>Abrir Novo Chamado</h2>
-          <form id="ticketForm" enctype="multipart/form-data">
+          <form id="ticket-form" enctype="multipart/form-data">
             <div class="form-group">
               <label for="title">Título</label>
               <input
@@ -41,9 +35,6 @@
               <label for="sectorId">Setor</label>
               <select required name="sectorId">
                 <option value="" selected disabled>Selecione o setor</option>
-                <option value="1">TI</option>
-                <option value="rh">Recursos Humanos</option>
-                <option value="financeiro">Financeiro</option>
               </select>
             </div>
 
@@ -94,5 +85,6 @@
 
     <!-- JS -->
     <script src="../js/chamados.js"></script>
+    <script src="../js/menuLateral.js"></script>
   </body>
 </html>

@@ -1,15 +1,70 @@
-// Lógica para mostrar os chamados registrdos
+// Valores constantes para uso global
+const url = "http://localhost:8080";
+let userId;
 
-const url = "https://all-in-one-back-end.onrender.com";
-const userId = localStorage.getItem("userId");
-
-// Função para buscar os chamodos
-async function getAllTickets() {
+// Função para buscar o usuário
+async function getUser() {
   // Pegando o token de login
   const token = localStorage.getItem("token");
 
   try {
-    const response = await fetch(`${url}/ticket/`, {
+    const response = await fetch(`${url}/user/${userId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    });
+
+    const data = await response.json();
+
+    // Verificando se a requisição foi realizada com sucesso
+    if (data.status == "success") {
+      // Buscando os tickets do setor específicado
+      getAllTickets(data.data.sector.id);
+    } else if (data.status == "error") {
+      console.log("Token inválido");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Função para buscar os setores
+async function getAllSectors() {
+  // Pegando o token de login
+  const token = localStorage.getItem("token");
+
+  try {
+    const response = await fetch(`${url}/sector/`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    });
+
+    const data = await response.json();
+
+    // Verificando se a requisição foi realizada com sucesso
+    if (data.status == "success") {
+      // Adicionando setores no formulário
+      addSectors(data.data);
+    } else if (data.status == "error") {
+      console.log("Token inválido");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Função para buscar os chamodos
+async function getAllTickets(sectorId) {
+  // Pegando o token de login
+  const token = localStorage.getItem("token");
+
+  try {
+    const response = await fetch(`${url}/sector/${sectorId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -67,7 +122,6 @@ async function getTicket(slug) {
 // função para atualizar o ticket
 async function updateTicket(id, body) {
   const token = localStorage.getItem("token");
-  
 
   try {
     const response = await fetch(`${url}/ticket/update/${id}`, {
@@ -115,7 +169,7 @@ async function createTicket(form) {
         "Content-Type": "application/json",
         Authorization: token,
       },
-      body: JSON.stringify({...body, userId: userId}),
+      body: JSON.stringify({ ...body, userId: userId }),
     });
 
     const data = await response.json();
@@ -151,7 +205,7 @@ function notify(msg) {
 }
 
 // Função para criar um elemento de ticket
-function createTicketElement(ticket) {
+function createTicketElement(sector, ticket) {
   const ticketElement = document.createElement("div");
   ticketElement.classList.add("ticket-item");
   ticketElement.setAttribute("draggable", "true");
@@ -159,7 +213,7 @@ function createTicketElement(ticket) {
   ticketElement.dataset.slug = ticket.slug;
   ticketElement.innerHTML = `
       <h3>${ticket.title}</h3>
-      <p>Setor: ${ticket.department}</p>
+      <p>Setor: ${sector.name}</p>
       <p>Status: ${ticket.status}</p>
       <p>Prioridade: ${ticket.urgency}</p>
   `;
@@ -167,8 +221,8 @@ function createTicketElement(ticket) {
 }
 
 // Função para adicionar o ticket na coluna correta
-function addTicketToColumn(ticket) {
-  ticket.forEach((ticket) => {
+function addTicketToColumn(sector) {
+  sector.tickets.forEach((ticket) => {
     const status = ticket.status;
 
     let column;
@@ -181,7 +235,7 @@ function addTicketToColumn(ticket) {
     }
 
     if (column) {
-      const ticketElement = createTicketElement(ticket);
+      const ticketElement = createTicketElement(sector, ticket);
       column.appendChild(ticketElement);
     }
   });
@@ -332,14 +386,30 @@ async function showTicketModal(ticket) {
     notify("Chamado não encontrado! no banco de dados!");
 }
 
+// Lógicaa para adicionar os setores ao formulário
+async function addSectors(sectors) {
+  const select = document.querySelector("#ticket-form > .form-group > select");
+
+  sectors.forEach((sector) => {
+    const option = document.createElement("option");
+    option.value = sector.id;
+    option.textContent = sector.name;
+    select.appendChild(option);
+  });
+}
+
 //___________________________________________________________________________________________
 
 // Adicionando os eventos
-window.onload = getAllTickets;
+window.onload = async () => {
+  userId = localStorage.getItem("userId");
+  await getUser();
+  await getAllSectors();
+};
 
 // Adicionando evento para pegar o envio dos dados do formulário e realizar o registro
 document
-  .getElementById("ticketForm")
+  .getElementById("ticket-form")
   .addEventListener("submit", async function (event) {
     // Impedir a ação padrão do formulário
     event.preventDefault();

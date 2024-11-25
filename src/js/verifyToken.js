@@ -1,4 +1,4 @@
-const url = "https://all-in-one-back-end.onrender.com";
+const url = "http://localhost:8080";
 
 // Função para verificar se o token de login é válido
 async function verifyToken() {
