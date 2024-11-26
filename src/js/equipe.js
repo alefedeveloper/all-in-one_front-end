@@ -1,5 +1,5 @@
 // Valores constantes para uso global
-const url = "http://localhost:8080";
+const url = "https://all-in-one-back-end.onrender.com";
 const token = localStorage.getItem("token");
 
 // Função para buscar os usuários

@@ -3,7 +3,7 @@ const form = document.getElementById("form");
 const alertArea = document.querySelector(".page-container .alert-area");
 
 // URL para requisições
-const url = "http://localhost:8080";
+const url = "https://all-in-one-back-end.onrender.com";
 
 // Lógica para realizar o login ou registro
 async function loginAndRegister(form, router) {

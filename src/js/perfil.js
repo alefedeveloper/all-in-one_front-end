@@ -1,5 +1,5 @@
 // Valores constantes para uso global
-const url = "http://localhost:8080";
+const url = "https://all-in-one-back-end.onrender.com";
 const userId = localStorage.getItem("userId");
 const token = localStorage.getItem("token");
 
@@ -101,7 +101,7 @@ function notify(msg) {
   document.body.appendChild(notification);
   // Removendo ele após um tempo
   setTimeout(() => {
-    alertArea.removeChild(alert);
+    document.body.removeChild(notification);
   }, 2000);
 }
 
