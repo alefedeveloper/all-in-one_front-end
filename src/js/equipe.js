@@ -33,7 +33,6 @@ async function getAllUser() {
 
 // Função pra atualizar os dados do usuário
 async function updateUser(userId, body) {
-  console.log(body, userId);
 
   try {
     const response = await fetch(`${url}/user/update/${userId}`, {
