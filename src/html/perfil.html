@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil</title>
+
+    <link rel="stylesheet" href="../css/perfil.css" />
+    <link rel="stylesheet" href="../css/menuLateral.css" />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/normalize.css" />
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  </head>
+  <body>
+    <div class="profile-container">
+      <!-- Ícone de Perfil -->
+      <div class="profile-image">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+          />
+        </svg>
+      </div>
+
+      <!-- Informações de Permissão e Setor -->
+      <div class="info-display">
+        <div class="info-group">
+          <div class="info-label">Permissão</div>
+          <div class="info-value permission"></div>
+        </div>
+        <div class="info-group">
+          <div class="info-label">Setor</div>
+          <div class="info-value sector"></div>
+        </div>
+      </div>
+
+      <!-- Formulário -->
+      <form class="profile-form" id="profile-form">
+        <div class="form-grid">
+          <!-- Primeira linha -->
+          <div class="form-group">
+            <label for="name">Nome</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <!-- Segunda linha -->
+          <div class="form-group">
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" />
+          </div>
+
+          <div class="form-group">
+            <label for="confirm-password">Confirmar Senha</label>
+            <input
+              type="password"
+              id="confirm-password"
+              name="confirm-password"
+            />
+          </div>
+        </div>
+
+        <button class="btn" type="submit">Salvar Alterações</button>
+      </form>
+    </div>
+    <!-- JS -->
+    <script src="../js/menuLateral.js"></script>
+    <script src="../js/perfil.js"></script>
+  </body>
+</html>

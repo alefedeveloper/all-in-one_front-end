@@ -168,17 +168,6 @@ textarea {
   color: var(--white);
 }
 
-.notification {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  padding: 1rem;
-  background: var(--navy);
-  color: var(--white);
-  border-radius: 4px;
-  animation: slideIn 0.3s ease-out;
-}
-
 @keyframes slideIn {
   from {
     transform: translateX(100%);

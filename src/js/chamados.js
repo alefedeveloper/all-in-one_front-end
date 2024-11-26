@@ -243,6 +243,14 @@ function notify(msg) {
   }, 2000);
 }
 
+// Função para ativar estado de loading do botão
+function setLoadingState() {
+  const submitButton = document.querySelector('form > button[type="submit"]');
+  submitButton.disabled = true;
+  submitButton.innerHTML = '<span class="spinner"></span> Processando...';
+  submitButton.classList.add("loading");
+}
+
 // Função para criar um elemento de ticket
 function createTicketElement(sector, ticket) {
   const ticketElement = document.createElement("div");
@@ -261,7 +269,6 @@ function createTicketElement(sector, ticket) {
 
 // Função para adicionar o ticket na coluna correta
 function addTicketToColumn(body, permission) {
-
   if (permission == "admin")
     body.forEach((ticket) => {
       const status = ticket.status;
@@ -472,7 +479,8 @@ document
   .addEventListener("submit", async function (event) {
     // Impedir a ação padrão do formulário
     event.preventDefault();
-
+    // Mudando o estado do botão
+    setLoadingState();
     // Funçao para realizar o registro
     await createTicket(this);
   });

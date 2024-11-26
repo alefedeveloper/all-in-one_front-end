@@ -92,6 +92,14 @@ function notify(msg) {
   }, 2000);
 }
 
+// Função para ativar estado de loading do botão
+function setLoadingState() {
+  const submitButton = document.querySelector('form > button[type="submit"]');
+  submitButton.disabled = true;
+  submitButton.innerHTML = '<span class="spinner"></span> Processando...';
+  submitButton.classList.add("loading");
+}
+
 //__________________________________________________________________________________________
 
 // Adicionando os eventos
@@ -102,7 +110,8 @@ document
   .addEventListener("submit", async function (event) {
     // Impedir a ação padrão do formulário
     event.preventDefault();
-
+    // Mudando o estado do botão
+    setLoadingState();
     // Funçao para realizar o registro
     await createSector(this);
   });

@@ -92,16 +92,27 @@ function alert(message, status) {
   }, 3000);
 }
 
+// Função para ativar estado de loading do botão
+function setLoadingState() {
+  const submitButton = document.querySelector('form > button[type="submit"]');
+  submitButton.disabled = true;
+  submitButton.innerHTML = '<span class="spinner"></span> Processando...';
+  submitButton.classList.add("loading");
+}
+
 //_________________________________________________________________________________________________
 
 // Adicionando evento para pegar o envio dos dados do formulário e realizar o registro
-form.addEventListener("submit", function (event) {
+form.addEventListener("submit", async function (event) {
   // Impedir a ação padrão do formulário
   event.preventDefault();
+
+  // Mudando o estado do botão
+  setLoadingState();
 
   // Pegando a rota
   const route = this.dataset.route;
 
   // Funçao para realizar o registro
-  loginAndRegister(this, route);
+  await loginAndRegister(this, route);
 });
