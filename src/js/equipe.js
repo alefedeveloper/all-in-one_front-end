@@ -147,7 +147,7 @@ function createUser(user, sectors) {
                       }>Colaborador</option>
                     </select>
 
-                    <select name="sector" id="sector" class="sector-camp">
+                    <select name="sector" id="sectorId" class="sector-camp">
                     ${
                       user.sector == "A definir"
                         ? `<option value="" selected disabled>${user.sector}</option>`
@@ -199,7 +199,7 @@ function dataProcessing(e) {
   const formData = new FormData(this);
   const body = {};
   formData.forEach((value, key) => {
-    if (key == "sector") body[key] = parseInt(value);
+    if (key == "sectorId") body[key] = parseInt(value);
     else body[key] = value;
   });
 
