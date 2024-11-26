@@ -199,7 +199,8 @@ function dataProcessing(e) {
   const formData = new FormData(this);
   const body = {};
   formData.forEach((value, key) => {
-    body[key] = value;
+    if (key == "sector") body[key] = parseInt(value);
+    else body[key] = value;
   });
 
   updateUser(id, body);
