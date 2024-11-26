@@ -39,8 +39,6 @@ async function updateUser(form) {
     if (value != "" && key != "confirm-password") body[key] = value;
   });
 
-  console.log(body);
-
   try {
     const response = await fetch(`${url}/user/update/${userId}`, {
       method: "PUT",

@@ -89,18 +89,59 @@ body {
     }
   }
 
-  .sector-list {
+  .sector-list,
+  .user-list {
     width: 20vw;
     height: 50vh;
     overflow-y: auto;
 
-    .sector {
+    &.user-list {
+      width: 50vw;
+    }
+
+    .sector,
+    .user {
       margin-bottom: 1rem;
       border: 2px solid var(--white-bd);
       border-left: 4px solid var(--navy);
       padding: 1rem;
       background: var(--white-bg);
       border-radius: 4px;
+
+      &.user {
+        span {
+          display: grid;
+          grid-template-columns: 60% 40%;
+          align-items: center;
+
+          .options {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+
+            .selects {
+              width: 90%;
+              select {
+                width: 45%;
+              }
+            }
+
+            .buttons > button {
+              font-size: 25px;
+              background-color: var(--navy);
+              color: var(--white);
+              padding: 3px;
+              border-radius: 4px;
+              cursor: pointer;
+
+              &:hover {
+                scale: 1.1;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

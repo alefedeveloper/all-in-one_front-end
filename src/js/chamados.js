@@ -26,7 +26,7 @@ async function getUser() {
       // Verificando a permissão do usuário
       if (data.data.permission == "admin") getAllTickets();
       // Buscando os tickets do setor específicado
-      else if (data.data.permission == "collaborator") {
+      else if (data.data.permission == "colaborador") {
         if (data.data.sector != "A definir")
           getAllTicketsSector(data.data.sector.id);
       }
@@ -239,7 +239,7 @@ function notify(msg) {
   document.body.appendChild(notification);
   // Removendo ele após um tempo
   setTimeout(() => {
-    alertArea.removeChild(alert);
+    document.body.removeChild(notification);
   }, 2000);
 }
 
