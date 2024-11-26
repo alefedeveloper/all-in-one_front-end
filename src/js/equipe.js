@@ -93,11 +93,7 @@ async function getAllSectors() {
 // Função para adicionar usuários no painel
 function addUsers(users, sectors) {
   users.forEach((user) => {
-    if (
-      user.sectorId != null ||
-      user.sectorId != undefined ||
-      user.sectorId != ""
-    ) {
+    if (user.sectorId != null) {
       sectors.forEach((setor) => {
         if (user.sectorId == setor.id) {
           createUser(
@@ -134,7 +130,9 @@ function createUser(user, sectors) {
               <p>${user.name}</p>
 
               <div class="options">
-
+                <form id="team-form" enctype="multipart/form-data" data-id="${
+                  user.id
+                }">
                   <div class="selects">
                     <select
                       name="permission"
@@ -164,13 +162,12 @@ function createUser(user, sectors) {
                       
                     </select>
                   </div>
-                  <input type="hidden" name="id" value="${user.id}" />
                   <div class="buttons">
-                    <button type="button" class="edit" id="edit">
+                    <button type="submit" class="edit" id="edit">
                       <i class="ph ph-note-pencil"></i>
                     </button>
                   </div>
-
+                </form>
               </div>
             </span>
           `;
@@ -193,40 +190,35 @@ function notify(msg) {
   }, 2000);
 }
 
+// Função de envio de dados
+function dataProcessing(e) {
+  e.preventDefault();
+
+  const id = parseInt(this.dataset.id);
+
+  const formData = new FormData(this);
+  const body = {};
+  formData.forEach((value, key) => {
+    body[key] = value;
+  });
+
+  updateUser(id, body);
+}
+
 //___________________________________________________________________________________________
 
 document.addEventListener("DOMContentLoaded", async () => {
   await getAllUser();
 
-  const btns = document.querySelectorAll(".edit");
+  const forms = document.querySelectorAll("#team-form");
 
-  if (btns != null) {
-    btns.forEach((button) => {
-      button.addEventListener("click", () => {
-        const permission = document.querySelector(".permission-camp").value;
-        const sector = document.querySelector(".sector-camp").value;
-        const id = document.querySelector("input[name='id']").value;
-
-        const body = {
-          permission: permission,
-          sectorId: parseInt(sector),
-        };
-
-        updateUser(id, body);
-      });
+  if (forms != null) {
+    forms.forEach((form) => {
+      form.addEventListener("submit", dataProcessing);
     });
   } else {
-    document.getElementById("edit").addEventListener("click", () => {
-      const permission = document.querySelector(".permission-camp").value;
-      const sector = document.querySelector(".sector-camp").value;
-      const id = document.querySelector("input[name='id']").value;
-
-      const body = {
-        permission: permission,
-        sectorId: parseInt(sector),
-      };
-
-      updateUser(id, body);
-    });
+    document
+      .getElementById("team-form")
+      .addEventListener("submit", dataProcessing);
   }
 });
