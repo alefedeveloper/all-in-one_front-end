@@ -146,11 +146,14 @@ function createUser(user, sectors) {
                     </select>
 
                     <select name="sector" id="sector" class="sector-camp">
-                    ${user.sector == "A definir" ? `<option value="" selected disabled>${user.sector}</option>`: ""}
+                    ${
+                      user.sector == "A definir"
+                        ? `<option value="" selected disabled>${user.sector}</option>`
+                        : ""
+                    }
                       ${sectors.map((setor) => {
                         if (user.sector == setor.name)
                           return `<option value="${setor.id}" selected>${user.sector}</option>`;
-
                         else
                           return `<option value="${setor.id}">${setor.name}</option>`;
                       })}
@@ -191,16 +194,34 @@ function notify(msg) {
 document.addEventListener("DOMContentLoaded", async () => {
   await getAllUser();
 
-  document.getElementById("edit").addEventListener("click", () => {
-    const permission = document.querySelector(".permission-camp").value;
-    const sector = document.querySelector(".sector-camp").value;
-    const id = document.querySelector("input[name='id']").value;
+  const btns = document.querySelectorAll(".edit");
 
-    const body = {
-      permission: permission,
-      sectorId: parseInt(sector),
-    };
+  if (btns.length > 0) {
+    btns.forEach((button) => {
+      button.addEventListener("click", () => {
+        const permission = document.querySelector(".permission-camp").value;
+        const sector = document.querySelector(".sector-camp").value;
+        const id = document.querySelector("input[name='id']").value;
 
-    updateUser(id, body);
-  });
+        const body = {
+          permission: permission,
+          sectorId: parseInt(sector),
+        };
+
+        updateUser(id, body);
+      });
+    });
+  } else
+    document.getElementById("edit").addEventListener("click", () => {
+      const permission = document.querySelector(".permission-camp").value;
+      const sector = document.querySelector(".sector-camp").value;
+      const id = document.querySelector("input[name='id']").value;
+
+      const body = {
+        permission: permission,
+        sectorId: parseInt(sector),
+      };
+
+      updateUser(id, body);
+    });
 });
