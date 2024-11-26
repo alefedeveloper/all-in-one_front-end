@@ -147,7 +147,7 @@ function createUser(user, sectors) {
                       }>Colaborador</option>
                     </select>
 
-                    <select name="sector" id="sectorId" class="sector-camp">
+                    <select name="sectorId" id="sectorId" class="sector-camp">
                     ${
                       user.sector == "A definir"
                         ? `<option value="" selected disabled>${user.sector}</option>`
