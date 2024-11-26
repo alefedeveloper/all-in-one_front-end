@@ -201,8 +201,6 @@ async function createTicket(form) {
     body[key] = value;
   });
 
-  console.log(body);
-
   try {
     const response = await fetch(`${url}/ticket/create/`, {
       method: "POST",

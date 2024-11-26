@@ -88,6 +88,21 @@ body {
       }
     }
   }
+
+  .sector-list {
+    width: 20vw;
+    height: 50vh;
+    overflow-y: auto;
+
+    .sector {
+      margin-bottom: 1rem;
+      border: 2px solid var(--white-bd);
+      border-left: 4px solid var(--navy);
+      padding: 1rem;
+      background: var(--white-bg);
+      border-radius: 4px;
+    }
+  }
 }
 
 .form-group {

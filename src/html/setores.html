@@ -1,0 +1,52 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Setores</title>
+
+    <link rel="stylesheet" href="../css/chamado.css" />
+    <link rel="stylesheet" href="../css/menuLateral.css" />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/normalize.css" />
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="painel">
+        <!-- Formulário de Novo Chamado -->
+        <div class="card">
+          <h2>Criar setor</h2>
+          <form id="sector-form" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="name">Nome do setor:</label>
+              <input
+                type="text"
+                name="name"
+                required
+                placeholder="Digite o título do chamado"
+              />
+            </div>
+            <button type="submit" class="btn">Criar setor</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Lista de setores -->
+      <div class="card tickets">
+        <h2>Setores</h2>
+
+        <div class="sector-list">
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- JS -->
+    <script src="../js/setores.js"></script>
+    <script src="../js/menuLateral.js"></script>
+  </body>
+</html>
