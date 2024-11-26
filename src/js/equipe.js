@@ -200,7 +200,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const btns = document.querySelectorAll(".edit");
 
-  if (btns.length > 0) {
+  if (btns != null) {
     btns.forEach((button) => {
       button.addEventListener("click", () => {
         const permission = document.querySelector(".permission-camp").value;
@@ -215,7 +215,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         updateUser(id, body);
       });
     });
-  } else
+  } else {
     document.getElementById("edit").addEventListener("click", () => {
       const permission = document.querySelector(".permission-camp").value;
       const sector = document.querySelector(".sector-camp").value;
@@ -228,4 +228,5 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       updateUser(id, body);
     });
+  }
 });
