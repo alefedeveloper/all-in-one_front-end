@@ -92,7 +92,7 @@ async function getAllSectors() {
 
 // Função para adicionar usuários no painel
 function addUsers(users, sectors) {
-  users.map((user) => {
+  users.forEach((user) => {
     if ((user.sectorId != null) | undefined | "") {
       sectors.forEach((setor) => {
         if (user.sectorId == setor.id) {
