@@ -45,7 +45,7 @@ async function loginAndRegister(form, router) {
       alert("Login realizado com sucesso!", "success");
 
       setTimeout(() => {
-        window.location.href = "../../index.html";
+        window.location.href = "../html/chamado.html";
       }, 1500);
     } else {
       // Registro realizado
