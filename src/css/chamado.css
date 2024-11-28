@@ -1,0 +1,251 @@
+:root {
+  --navy: #001f3f;
+  --light-navy: #173555;
+  --white: #ffffff;
+  --white-bg: #fcfcfc;
+  --white-bd: #f0f0f0;
+  --gray: #f0f2f5;
+  --waiting: #b4b4b4;
+  --progress: #da710f;
+  --completed: #22b11d;
+  --closed: #c21616;
+}
+
+body {
+  background-color: var(--gray);
+}
+
+.navbar {
+  background-color: var(--navy);
+  padding: 1rem;
+  color: var(--white);
+}
+
+.container {
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.card {
+  background: var(--white);
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .tickets-group {
+    display: flex;
+    gap: 1.5rem;
+
+    .ticket-list {
+      display: grid;
+      gap: 1rem;
+      margin-inline: 0.7rem;
+
+      &.drag-over {
+        background-color: #e0f7fa;
+      }
+
+      .list {
+        width: 265px;
+        height: 515px;
+        overflow-y: auto;
+
+        .ticket-item {
+          margin-bottom: 1rem;
+          border: 2px solid var(--white-bd);
+          border-left: 4px solid var(--navy);
+          padding: 1rem;
+          background: var(--white-bg);
+          border-radius: 4px;
+          cursor: pointer; /* Indica que o item pode ser movido */
+          transition: transform 0.2s ease;
+
+          /* Efeito aplicado ao item quando está sendo arrastado */
+          &:active {
+            transform: scale(1.05); /* Aumenta ligeiramente o tamanho do item */
+          }
+        }
+      }
+
+      &.waiting > h3 {
+        border-bottom: 4px solid var(--waiting);
+      }
+
+      &.progress > h3 {
+        border-bottom: 4px solid var(--progress);
+      }
+
+      &.completed > h3 {
+        border-bottom: 4px solid var(--completed);
+      }
+    }
+  }
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--navy);
+  font-weight: bold;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  background-color: var(--navy);
+  color: var(--white);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--light-navy);
+}
+
+.priority-high {
+  border-left-color: #ff4444;
+}
+
+.priority-medium {
+  border-left-color: #ffbb33;
+}
+
+.priority-low {
+  border-left-color: #00c851;
+}
+
+.tabs {
+  display: flex;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--navy);
+}
+
+.tab {
+  padding: 1rem 2rem;
+  cursor: pointer;
+  color: var(--navy);
+}
+
+.tab.active {
+  background-color: var(--navy);
+  color: var(--white);
+}
+
+.notification {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  padding: 1rem;
+  background: var(--navy);
+  color: var(--white);
+  border-radius: 4px;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.ticket-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+  width: 550px;
+  max-width: 800px;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.ticket-info {
+  margin-top: 20px;
+  padding-top: 20px;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 20px;
+  border-top: 2px solid var(--navy);
+
+  .info {
+    display: flex;
+
+    &.info-1 {
+      justify-content: space-between;
+    }
+
+    &.info-2 {
+      gap: 32%;
+    }
+
+    p {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 15px;
+
+      strong {
+        font-size: 20px;
+      }
+
+      span {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+h2 {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
